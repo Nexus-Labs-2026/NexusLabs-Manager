@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090d16" />
+  <title>NexusLabs Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+          <strong>NexusLabs</strong>
+          <span>Manager</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-view="servers">▣ <span>Servers</span></button>
+        <button class="nav-item" data-view="sessions">↗ <span>Sessions</span></button>
+        <button class="nav-item" data-view="credentials">◈ <span>Credentials</span></button>
+        <button class="nav-item" data-view="activity">◷ <span>Activity</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="settings">⚙ <span>Settings</span></button>
+        <div class="connection-status"><i></i> Local vault ready</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn">☰</button>
+        <div class="breadcrumbs"><span>NexusLabs Manager</span><b>/</b><strong id="pageTitle">Dashboard</strong></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button>
+          <button class="icon-btn" id="notifyBtn" title="Notifications">♢</button>
+          <button class="avatar" id="profileBtn">NL</button>
+        </div>
+      </header>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <h3 id="modalTitle">Add server</h3>
+        <button class="icon-btn" id="modalClose">×</button>
+      </div>
+      <form id="serverForm">
+        <label>Name<input name="name" required placeholder="Production Node 01"></label>
+        <label>Host / IP<input name="host" required placeholder="203.0.113.42"></label>
+        <div class="form-grid">
+          <label>Protocol<select name="protocol"><option>RDP</option><option>SSH</option><option>VNC</option><option>WinRM</option></select></label>
+          <label>Port<input name="port" type="number" value="3389" required></label>
+        </div>
+        <label>Group<input name="group" placeholder="Production"></label>
+        <label>Notes<textarea name="notes" rows="3" placeholder="Optional notes"></textarea></label>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="cancelModal">Cancel</button>
+          <button type="submit" class="btn primary">Save server</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

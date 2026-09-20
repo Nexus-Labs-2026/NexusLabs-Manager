@@ -1,0 +1,7 @@
+services:
+  nexuslabs-manager:
+    build: .
+    container_name: nexuslabs-manager
+    restart: unless-stopped
+    ports:
+      - "8080:80"
